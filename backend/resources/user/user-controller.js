@@ -15,6 +15,12 @@ userCtrl.newUser = newUser;
 
 function newUser(reqBody) {
   console.log('USER CONTROLLER HIT WITH : ', reqBody);
+  let userInfo = {
+    username: reqBody.username,
+    password: reqBody.password,
+    email: reqBody.email
+  };
+  console.log('USER INFO IN CREATED OBJECT IS : ', userInfo);
   debug('newUser');
   return new Promise((resolve, reject) => {
     if (!reqBody.username || !reqBody.password || !reqBody.email) {
@@ -22,11 +28,6 @@ function newUser(reqBody) {
       // return reject('AWWW SNAP');
 
     }
-    let userInfo = {
-      username: reqBody.username,
-      password: reqBody.password,
-      email: reqBody.email
-    };
 
     User.create(userInfo, (err, user) => {
       console.log('USER CREATE HIT');

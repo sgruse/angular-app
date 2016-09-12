@@ -9,7 +9,7 @@ const newAccountRouter = require('express').Router();
 module.exports = newAccountRouter;
 
 newAccountRouter.post('/', (req, res, next) => {
-  console.log('NEW ACCOUNT POST HIT WITH : ', req.body);
+  console.log('NEW ACCOUNT ROUTER HIT WITH : ', req.body);
   debug('Post made to /new-account', req.body);
   userCtrl.newUser(req.body)
     .then((user) => {

@@ -7,7 +7,7 @@ const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost8080';
 
 // Loading NPM modules
 const express = require('express');
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser').json();
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const Promise = require('bluebird');
@@ -40,7 +40,9 @@ mongoose.connect(DB_PORT);
 // Configure express
 // Attach shared Middlewares
 app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({extended: false}));
+// app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser);
+
 app.use(cors({
   origin: CLIENT_URL,
   credentials: true,
